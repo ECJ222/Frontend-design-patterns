@@ -18,7 +18,7 @@ class Article {
   }
 }
 
-class Draft {
+export class Draft {
   draft: string;
 
   constructor(draft: string) {
@@ -39,7 +39,7 @@ class Draft {
   }
 }
 
-class Moderation {
+export class Moderation {
   draft: string;
 
   constructor(draft: string) {
@@ -60,12 +60,14 @@ class Moderation {
   }
 }
 
-class Publish {
+export class Publish {
   action() {
     console.log('Saving the document in Publish state');
   }
 }
 
-const article = new Article('is not clean');
-
-article.save();
+export const newArticle = (documentState: string) => {
+  const articleInstance = new Article(documentState)
+  articleInstance.save();
+  return articleInstance;
+}

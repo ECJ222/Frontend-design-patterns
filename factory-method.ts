@@ -24,8 +24,6 @@ class Toast {
 }
 
 // Factory Method.
-function getToast(deviceType: string) {
+export const getToast = (deviceType: string) => {
   return new Toast('Testing toast functionality', deviceType).showToast();
 }
-
-console.log(getToast('desktop'));

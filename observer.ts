@@ -3,40 +3,43 @@
 // Central point is the Modal and when it receives data it distributes it to the children.
 // Similar to the MVC pattern.
 
-class CatergoryDropDown {
-  categories: string[];
-  subscriber: Array<(data: string) => void>;
+import axios from 'axios';
 
-  constructor() {
-    this.categories = ['Electronics', 'Clothing', 'Food', 'Books'];
-    this.subscriber = [];
-  }
-
-  subscribe(Observer) {
-    this.subscriber.push(Observer);
-  }
-
-  onChange(selectedCategory) {
-    this.subscriber.forEach((observer) => observer(selectedCategory));
-  }
-}
-
-class FilterDropDown {
+class Filter {
   type: string;
 
   constructor(type: string) {
     this.type = type;
   }
 
-  update(category) {
-    fetch('https://example.com')
-      .then((res) => res.json())
-      .then((data) => console.log(data));
+  async update() {
+    // dummy endpoint.
+    const response = await axios.get(`https://example.com?category=${this.type}`)
+    console.log(response) // :)
   }
 }
 
-const categoryDropDown = new CatergoryDropDown();
+class CatergoryDropDown {
+  subscriber: Array<Filter>;
 
-const filter = new FilterDropDown('Electronics');
+  constructor() {
+    this.subscriber = [];
+  }
 
-categoryDropDown.subscribe(filter);
+  subscribe(observer: Filter) {
+    this.subscriber.push(observer);
+  }
+
+  onChange() {
+    this.subscriber.forEach((observer) => observer.update());
+  }
+}
+
+export const getCategories = (type: string) => {
+  const categoryDropDown = new CatergoryDropDown();
+
+  const filter = new Filter(type);
+
+  categoryDropDown.subscribe(filter);
+  categoryDropDown.onChange();
+};

@@ -32,6 +32,3 @@ export {
   regularPizza,
   deluxePepperoniPizza
 }
-
-// import { regularPizza, deluxePepperoniPizza } from './decorator';
-// instead of const { regularPizza, deluxePepperoniPizza } = require('./decorator');)

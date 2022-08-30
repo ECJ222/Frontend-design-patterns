@@ -12,15 +12,15 @@ export class PaymentCondition {
 
   static MorningFlight(paymentDetails: PaymentDetails) {
     // Initialize payment with Paystack.
-    console.log('Just payed with Paystack.');
+    console.log('Just payed with Paystack -> ', paymentDetails);
   }
   static AfternoonFlight(paymentDetails: PaymentDetails) {
     // Initialize payment with Paystack.
-    console.log('Just payed with Paystack.');
+    console.log('Just payed with Paystack.', paymentDetails);
   }
   static NightFlight(paymentDetails: PaymentDetails) {
     // Initialize payment with LazerPay.
-    console.log('Just payed with Lazerpay.');
+    console.log('Just payed with Lazerpay.', paymentDetails);
   }
 }
 
@@ -41,5 +41,8 @@ class Order {
   }
 }
 
-const newOrder = new Order('MorningFlight');
-newOrder.pay();
+export const newOrder = (type) => {
+  const orderInstance = new Order(type);
+  orderInstance.pay()
+  return orderInstance;
+}

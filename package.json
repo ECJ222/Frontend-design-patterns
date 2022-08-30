@@ -1,0 +1,25 @@
+{
+  "name": "frontend-design-patterns",
+  "version": "1.0.0",
+  "description": "Testing stuff",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ECJ222/Frontend-design-patterns.git"
+  },
+  "keywords": [
+    "typescript"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ECJ222/Frontend-design-patterns/issues"
+  },
+  "homepage": "https://github.com/ECJ222/Frontend-design-patterns#readme",
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
+}

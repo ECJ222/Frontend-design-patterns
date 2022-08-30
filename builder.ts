@@ -12,6 +12,7 @@ class DataTable {
   }
 }
 
+// Dummy API class.
 class Api {
   getFood(network: boolean): Promise<Record<string, any>> {
     return new Promise((resolve, reject) => {
@@ -86,9 +87,12 @@ function BuilderPattern(this: any) {
   };
 }
 
+// Example response
 getResponse().then((response) => {
   const { headers, data } = response;
   const builder = new (BuilderPattern as any)().addHeader(headers).addData(data).build();
 
   console.log(builder.getData());
 });
+
+export const Builder = new (BuilderPattern as any)();
